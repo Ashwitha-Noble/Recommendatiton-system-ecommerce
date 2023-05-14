@@ -10,8 +10,6 @@ Original file is located at
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
-
-# %matplotlib inline
 plt.style.use("ggplot")
 
 import sklearn
@@ -39,10 +37,6 @@ downloaded = drive.CreateFile({'id':id})
 downloaded.GetContentFile('ratings_Beauty.csv')  
 amazon_ratings = pd.read_csv('ratings_Beauty.csv')
 
-#from google.colab import files
-#uploaded = files.upload()
-
-#amazon_ratings = pd.read_csv('ratings_Beauty.csv')
 amazon_ratings = amazon_ratings.dropna()
 amazon_ratings.head()
 
@@ -52,7 +46,7 @@ popular_products = pd.DataFrame(amazon_ratings.groupby('ProductId')['Rating'].co
 most_popular = popular_products.sort_values('Rating', ascending=False)
 most_popular.head(10)
 
-most_popular.head(30).plot(kind = "bar")  #1st
+most_popular.head(30).plot(kind = "bar")
 
 """**Recommendation System - Part II**
 
@@ -104,19 +98,6 @@ from sklearn.feature_extraction.text import TfidfVectorizer, CountVectorizer
 from sklearn.neighbors import NearestNeighbors
 from sklearn.cluster import KMeans
 from sklearn.metrics import adjusted_rand_score
-
-#link = 'https://drive.google.com/file/d/1SnzhKv52XxY3MFvs-6aBCUThX17urDhe/view?usp=sharing'
-#link2=link
-
-#fluff, id2 = link2.split('=')
-#print (id2) # Verify that you have everything after '='
-
-#id2 = link2.split("/")[-2]
-
-#downloaded2 = drive.CreateFile({'id':id}) 
-#downloaded2.GetContentFile('product_descriptions.csv')  
-#product_descriptions = pd.read_csv('product_descriptions.csv')
-
 from google.colab import files
 uploaded = files.upload()
 
